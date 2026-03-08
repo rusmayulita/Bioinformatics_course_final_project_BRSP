@@ -1,0 +1,383 @@
+ID	Gene.symbol	Gene.title	log2(fold change)	-log10(Pvalue)
+ILMN_1651490	CYP26A1	cytochrome P450 family 26 subfamily A member 1	1.124	4.396
+ILMN_1651498	GADD45G	growth arrest and DNA damage inducible gamma	1.613	7.288
+ILMN_1652371	KIAA1324L	KIAA1324 like	-1.24	3.484
+ILMN_1652487	RIOK1	RIO kinase 1	-1.065	4.828
+ILMN_1654287	ADCY9	adenylate cyclase 9	-1.015	3.701
+ILMN_1654389			3.043	15.163
+ILMN_1654685	MCTP1	multiple C2 and transmembrane domain containing 1	1.138	12.571
+ILMN_1656940	ABLIM3	actin binding LIM protein family member 3	1.066	6.616
+ILMN_1657683	C1orf198	chromosome 1 open reading frame 198	1.021	7.231
+ILMN_1657708	MGLL	monoglyceride lipase	1.057	4.992
+ILMN_1657868	SIRT4	sirtuin 4	-1.461	5.436
+ILMN_1657871	RSAD2	radical S-adenosyl methionine domain containing 2	1.741	4.428
+ILMN_1658677	DTX3	deltex E3 ubiquitin ligase 3	-1.222	5.485
+ILMN_1658697			1.104	3.499
+ILMN_1658728	ZBTB25	zinc finger and BTB domain containing 25	-1.045	5.32
+ILMN_1659047	HIST2H2AA3	histone cluster 2, H2aa3	1.001	7.18
+ILMN_1659227	CD79A	CD79a molecule	-2.26	5.154
+ILMN_1659444	KIF1B	kinesin family member 1B	1.225	8.672
+ILMN_1660114	MMRN1	multimerin 1	1.261	5.798
+ILMN_1660412			-1.008	5.288
+ILMN_1660624	LIMK2	LIM domain kinase 2	1.416	6.887
+ILMN_1661589	CD151	CD151 molecule (Raph blood group)	1.385	8.311
+ILMN_1661646	BANK1	B-cell scaffold protein with ankyrin repeats 1	-1.259	9.509
+ILMN_1662619	TFPI	tissue factor pathway inhibitor	1.219	7.576
+ILMN_1663119	DSC2	desmocollin 2	1.344	5.16
+ILMN_1664063	FAM129C	family with sequence similarity 129 member C	-1.441	6.673
+ILMN_1664265	EPHA1	EPH receptor A1	-1.132	4.752
+ILMN_1664330	CEACAM1	carcinoembryonic antigen related cell adhesion molecule 1	1.478	7.322
+ILMN_1664543	IFIT3	interferon induced protein with tetratricopeptide repeats 3	1.993	7.171
+ILMN_1665540			1.054	7.353
+ILMN_1665761	BCL11B	B-cell CLL/lymphoma 11B	-1	9.404
+ILMN_1667022	PASK	PAS domain containing serine/threonine kinase	-1.047	4.968
+ILMN_1668277	BLK	BLK proto-oncogene, Src family tyrosine kinase	-1.471	7.046
+ILMN_1669177	DHRS12	dehydrogenase/reductase 12	1.064	7.107
+ILMN_1669497	OSBPL10	oxysterol binding protein like 10	-1.819	9.476
+ILMN_1670305	SERPING1	serpin family G member 1	3.379	13.827
+ILMN_1670410			1.018	7.885
+ILMN_1671142	GPR68	G protein-coupled receptor 68	-1.157	5.76
+ILMN_1671486			1.006	4.202
+ILMN_1671703	ACTA2	actin, alpha 2, smooth muscle, aorta	1.133	9.349
+ILMN_1671928	PROS1	protein S (alpha)	1.002	3.456
+ILMN_1672022	EPHA4	EPH receptor A4	-1.751	7.579
+ILMN_1672575	SLC26A8	solute carrier family 26 member 8	1.173	5.595
+ILMN_1672807	CA5B	carbonic anhydrase 5B	-1.056	11.813
+ILMN_1673548	LGALSL	galectin like	1.178	4.538
+ILMN_1674574	VNN1	vanin 1	1.102	4.945
+ILMN_1674789			1.159	8.312
+ILMN_1674891			1.081	9.987
+ILMN_1675062	MYL9	myosin light chain 9	1.468	6.355
+ILMN_1675354			1.517	7.94
+ILMN_1675617	NT5M	5',3'-nucleotidase, mitochondrial	1.286	5.717
+ILMN_1675756	KCNJ15	potassium voltage-gated channel subfamily J member 15	1.596	7.398
+ILMN_1676893	ADCY3	adenylate cyclase 3	1.063	8.122
+ILMN_1677693	HCAR3	hydroxycarboxylic acid receptor 3	1.145	5.836
+ILMN_1677793	P2RX5	purinergic receptor P2X 5	-1.279	4.401
+ILMN_1678494	ZNF438	zinc finger protein 438	1.083	8.114
+ILMN_1679357	DEFA1B	defensin alpha 1B	1.24	3.453
+ILMN_1679620			1.058	5.843
+ILMN_1681249	KIF21A	kinesin family member 21A	-1.097	4.622
+ILMN_1681301	AIM2	absent in melanoma 2	1.89	12.398
+ILMN_1681601	SUCNR1	succinate receptor 1	1.455	8.574
+ILMN_1681721	OASL	2'-5'-oligoadenylate synthetase like	1.236	2.884
+ILMN_1683250			1.286	8.529
+ILMN_1683678	SPATS2L	spermatogenesis associated serine rich 2 like	1.013	5.409
+ILMN_1683792	LAP3	leucine aminopeptidase 3	1.552	11.601
+ILMN_1684445	FCRL5	Fc receptor like 5	-1.091	4.684
+ILMN_1686454	TIFA	TRAF interacting protein with forkhead associated domain	1.432	6.813
+ILMN_1687201	APOL6	apolipoprotein L6	1.389	6.97
+ILMN_1690105	STAT1	signal transducer and activator of transcription 1	1.374	14.228
+ILMN_1690241	BATF2	basic leucine zipper ATF-like transcription factor 2	3.058	15.331
+ILMN_1690783	TREML1	triggering receptor expressed on myeloid cells like 1	1.254	7.613
+ILMN_1690863	ZNF470	zinc finger protein 470	-1.077	3.741
+ILMN_1690907	CCR6	C-C motif chemokine receptor 6	-1.222	9.357
+ILMN_1690939	TYMP	thymidine phosphorylase	1.191	13.264
+ILMN_1691364	STAT1	signal transducer and activator of transcription 1	1.11	12.508
+ILMN_1691410	BAMBI	BMP and activin membrane bound inhibitor	1.125	2.839
+ILMN_1691693			-1.288	7.961
+ILMN_1691881			1.173	5.21
+ILMN_1693262			1.087	2.867
+ILMN_1693269	GNG8	G protein subunit gamma 8	1.173	5.051
+ILMN_1693630	VPS9D1	VPS9 domain containing 1	1.18	10.414
+ILMN_1693781			-1.223	4.652
+ILMN_1694966	ASGR2	asialoglycoprotein receptor 2	1.438	6.194
+ILMN_1695246	KLHDC8B	kelch domain containing 8B	1.01	7.684
+ILMN_1695435			1.442	8.632
+ILMN_1695744	LILRB2	leukocyte immunoglobulin like receptor B2	1.018	5.05
+ILMN_1697777	TSTA3	tissue specific transplantation antigen P35B	1.363	7.237
+ILMN_1698164			1.437	4.422
+ILMN_1698519			1.12	2.893
+ILMN_1698725	FRMD3	FERM domain containing 3	1.106	9.572
+ILMN_1698803	ZAK	sterile alpha motif and leucine zipper containing kinase AZK	1.227	5.761
+ILMN_1699599	FCRL3	Fc receptor like 3	-1.471	7.023
+ILMN_1699695	TNFRSF21	TNF receptor superfamily member 21	-1.046	3.209
+ILMN_1700147	VPREB3	pre-B lymphocyte 3	-1.358	4.358
+ILMN_1700994	KREMEN1	kringle containing transmembrane protein 1	1.053	8.851
+ILMN_1701114	GBP1	guanylate binding protein 1	1.889	12.504
+ILMN_1701237	SH2D1B	SH2 domain containing 1B	-1.167	5.771
+ILMN_1701243	C10orf2	chromosome 10 open reading frame 2	-1.105	5.282
+ILMN_1701455	FBXO6	F-box protein 6	1.253	11.201
+ILMN_1701603	ALPL	alkaline phosphatase, liver/bone/kidney	1.055	3.667
+ILMN_1701621	SCO2	SCO2 cytochrome c oxidase assembly protein	1.261	11.075
+ILMN_1701789	IFIT3	interferon induced protein with tetratricopeptide repeats 3	1.393	6.136
+ILMN_1701914	CD274	CD274 molecule	2.314	9.494
+ILMN_1702120	NDUFAF3	NADH:ubiquinone oxidoreductase complex assembly factor 3	1.654	7.437
+ILMN_1703108	UBE2L6	ubiquitin conjugating enzyme E2 L6	1.2	12.636
+ILMN_1705297	MYBPH	myosin binding protein H	-1.025	1.721
+ILMN_1706268	PTGDR	prostaglandin D2 receptor	-1.216	6.172
+ILMN_1706635	ELANE	elastase, neutrophil expressed	1.362	5.175
+ILMN_1707124	TFPI	tissue factor pathway inhibitor	1.082	7.091
+ILMN_1707979	CARD17	caspase recruitment domain family member 17	2.584	6.634
+ILMN_1708728	H2AFJ	H2A histone family member J	1.09	12.291
+ILMN_1708881	RAB20	RAB20, member RAS oncogene family	1.171	5.354
+ILMN_1710017	CD79B	CD79b molecule	-1.105	6.09
+ILMN_1710734	GZMK	granzyme K	-1.545	10.298
+ILMN_1710740	C2	complement component 2	1.221	4.699
+ILMN_1711514	COCH	cochlin	-1.2	5.545
+ILMN_1711702	CLEC2D	C-type lectin domain family 2 member D	-1.014	9.004
+ILMN_1712719	MAP7	microtubule associated protein 7	-1.64	5.029
+ILMN_1712721	GAST	gastrin	1.039	5.455
+ILMN_1713058	PSTPIP2	proline-serine-threonine phosphatase interacting protein 2	1.498	14.542
+ILMN_1714093	RMND5A	required for meiotic nuclear division 5 homolog A	1.036	3.791
+ILMN_1714445	SLC6A9	solute carrier family 6 member 9	1.012	3.273
+ILMN_1715417	SELP	selectin P	1.285	5.97
+ILMN_1715603	IL23A	interleukin 23 subunit alpha	-1.248	4.929
+ILMN_1716687	TPM1	tropomyosin 1 (alpha)	1.052	7.857
+ILMN_1716815	CEACAM1	carcinoembryonic antigen related cell adhesion molecule 1	1.311	7.799
+ILMN_1717594	AP5B1	adaptor related protein complex 5 beta 1 subunit	1.233	6.853
+ILMN_1719998	UAP1L1	UDP-N-acetylglucosamine pyrophosphorylase 1 like 1	-1.2	5.494
+ILMN_1721127	HIST1H3D	histone cluster 1, H3d	1.17	6.095
+ILMN_1721888	ITGA2B	integrin subunit alpha 2b	1.573	7.85
+ILMN_1722158	CASP5	caspase 5	1.9	10.028
+ILMN_1722981	TLR5	toll like receptor 5	1.374	11.26
+ILMN_1723436	PFKFB2	6-phosphofructo-2-kinase/fructose-2,6-biphosphatase 2	1.004	4.787
+ILMN_1723662	ABHD2	abhydrolase domain containing 2	1.165	4.647
+ILMN_1723912	IFI44L	interferon induced protein 44 like	1.259	3.198
+ILMN_1724480	AXIN2	axin 2	-1.008	5.672
+ILMN_1724789	CD59	CD59 molecule	1.255	8.494
+ILMN_1725247	GTF2A1	general transcription factor IIA subunit 1	1.134	4.898
+ILMN_1725417	NELL2	neural EGFL like 2	-1.293	7.445
+ILMN_1725471	GK	glycerol kinase	1.333	8.836
+ILMN_1725661	DEFA1B	defensin alpha 1B	1.203	2.916
+ILMN_1726545	LILRA5	leukocyte immunoglobulin like receptor A5	1.551	8.53
+ILMN_1726591	CARD16	caspase recruitment domain family member 16	1.242	8.897
+ILMN_1727271	WARS	tryptophanyl-tRNA synthetase	1.531	17.822
+ILMN_1728107	GNG7	G protein subunit gamma 7	-1.1	7.657
+ILMN_1728677	CREB5	cAMP responsive element binding protein 5	1.063	3.909
+ILMN_1729208	BEX3	brain expressed X-linked 3	1.035	7.557
+ILMN_1729453	TSPAN9	tetraspanin 9	1.033	7.034
+ILMN_1730454	FOLR3	folate receptor 3	1.062	2.175
+ILMN_1732071	HIST2H2BE	histone cluster 2, H2be	1.033	8.68
+ILMN_1732269	GP6	glycoprotein VI platelet	1.176	9.524
+ILMN_1732296	ID3	inhibitor of DNA binding 3, HLH protein	-1.202	8.246
+ILMN_1732923	SIPA1L2	signal induced proliferation associated 1 like 2	1.105	5.876
+ILMN_1733324	ITGB3	integrin subunit beta 3	1.432	8.101
+ILMN_1733998			1.109	8.588
+ILMN_1734878	CD79A	CD79a molecule	-1.584	9.112
+ILMN_1735792	RHBDF2	rhomboid 5 homolog 2	1.413	8.546
+ILMN_1737627	MAPK14	mitogen-activated protein kinase 14	1.34	6.701
+ILMN_1738530	ATAD3A	ATPase family, AAA domain containing 3A	-1.182	3.376
+ILMN_1740160	PLCG1	phospholipase C gamma 1	-1.053	11.461
+ILMN_1742001	CD160	CD160 molecule	-1.326	5.574
+ILMN_1742026	PYHIN1	pyrin and HIN domain family member 1	-1.027	8.197
+ILMN_1742601	CR1	complement component 3b/4b receptor 1 (Knops blood group)	1.193	4.766
+ILMN_1743034	KIF1B	kinesin family member 1B	1.043	6.97
+ILMN_1745112	FAM102A	family with sequence similarity 102 member A	-1.162	7.472
+ILMN_1745242	PLSCR1	phospholipid scramblase 1	1.557	10.481
+ILMN_1745374	IFI35	interferon induced protein 35	1.125	10.696
+ILMN_1746138	CARMIL2	capping protein regulator and myosin 1 linker 2	-1.125	4.699
+ILMN_1747744	LHFPL2	lipoma HMGIC fusion partner-like 2	1.403	12.021
+ILMN_1750294	ADAM7	ADAM metallopeptidase domain 7	-1.367	8.917
+ILMN_1750497	HCAR2	hydroxycarboxylic acid receptor 2	1.265	4.968
+ILMN_1752226	P2RY11	purinergic receptor P2Y11	-1.131	5.045
+ILMN_1752755	VWF	von Willebrand factor	1.056	4.021
+ILMN_1753347	DEFA4	defensin alpha 4	1.286	3.704
+ILMN_1755843	SLC26A8	solute carrier family 26 member 8	1.733	5.823
+ILMN_1756238	TMEM217	transmembrane protein 217	1.16	3.448
+ILMN_1756705	CHTF18	chromosome transmission fidelity factor 18	-1.105	5.019
+ILMN_1756953	GBP6	guanylate binding protein family member 6	3.325	10.932
+ILMN_1757391	TMEM50B	transmembrane protein 50B	-1.15	4.016
+ILMN_1757408	ZNF256	zinc finger protein 256	-1.035	8.224
+ILMN_1759075	TNFRSF13B	TNF receptor superfamily member 13B	-1.471	7.349
+ILMN_1759250	TAP2	transporter 2, ATP binding cassette subfamily B member	1.008	9.476
+ILMN_1760102			-1.047	5.314
+ILMN_1760688	SAMD14	sterile alpha motif domain containing 14	1.288	4.795
+ILMN_1761031	PTPDC1	protein tyrosine phosphatase domain containing 1	-1.101	3.87
+ILMN_1761260	COBLL1	cordon-bleu WH2 repeat protein like 1	-1.02	6.475
+ILMN_1761793	APOL1	apolipoprotein L1	1.302	6.083
+ILMN_1762713	MCEMP1	mast cell expressed membrane protein 1	1.556	7.359
+ILMN_1763433	TRIM9	tripartite motif containing 9	1.163	3.833
+ILMN_1764321	ACOT4	acyl-CoA thioesterase 4	-1.002	2.181
+ILMN_1767377			1.14	6.063
+ILMN_1768973	HIST2H2AC	histone cluster 2, H2ac	1.103	9.28
+ILMN_1769520	UBE2L6	ubiquitin conjugating enzyme E2 L6	1.089	13.397
+ILMN_1769575	JAM3	junctional adhesion molecule 3	1.049	6.503
+ILMN_1770818			-1.359	3.062
+ILMN_1771385	GBP4	guanylate binding protein 4	1.309	12.138
+ILMN_1771599	PLOD2	procollagen-lysine,2-oxoglutarate 5-dioxygenase 2	1.634	8.664
+ILMN_1772627	NSG1	neuron specific gene family member 1	-1.116	1.672
+ILMN_1773567	LAMA5	laminin subunit alpha 5	-1.545	5.207
+ILMN_1773650	LRRN3	leucine rich repeat neuronal 3	-1.341	4.414
+ILMN_1774733	SOCS1	suppressor of cytokine signaling 1	1.915	11.2
+ILMN_1775235	AFF3	AF4/FMR2 family member 3	-1.717	6.612
+ILMN_1775373	CMTM5	CKLF like MARVEL transmembrane domain containing 5	1.291	7.141
+ILMN_1775542	FCMR	Fc fragment of IgM receptor	-1.245	11.544
+ILMN_1776157	SEPT4	septin 4	2.291	11.983
+ILMN_1776483			1.107	8.576
+ILMN_1777759	FIGNL2	fidgetin like 2	-1.234	4.277
+ILMN_1777853			1.033	5.299
+ILMN_1778059	CASP4	caspase 4	1.194	8.051
+ILMN_1778681	EBF1	early B-cell factor 1	-1.691	7.579
+ILMN_1779071	FEZ1	fasciculation and elongation protein zeta 1	-1.133	3.921
+ILMN_1779558	GAS6	growth arrest specific 6	1.028	7.283
+ILMN_1779934	CDH23	cadherin-related 23	1.218	2.563
+ILMN_1780546	OSM	oncostatin M	1.19	5.602
+ILMN_1780831	SLC6A12	solute carrier family 6 member 12	1.307	5.012
+ILMN_1781001	SOCS3	suppressor of cytokine signaling 3	1.49	5.17
+ILMN_1781085	STAP1	signal transducing adaptor family member 1	-1.148	5.335
+ILMN_1782429	TMEM56	transmembrane protein 56	1.692	3.785
+ILMN_1782487	GBP1P1	guanylate binding protein 1 pseudogene 1	2.267	12.787
+ILMN_1782551	E2F5	E2F transcription factor 5	-1.108	8.469
+ILMN_1782704	CD19	CD19 molecule	-1.573	6.974
+ILMN_1782851	TAPBP	TAP binding protein (tapasin)	1.176	7.962
+ILMN_1783627			1.16	6.86
+ILMN_1783798	GAS8	growth arrest specific 8	1.06	6.554
+ILMN_1783805	PNMA3	paraneoplastic Ma antigen 3	-1.341	3.728
+ILMN_1783843	MIIP	migration and invasion inhibitory protein	1.03	7.391
+ILMN_1784380	DTX3L	deltex E3 ubiquitin ligase 3L	1.039	6.392
+ILMN_1784948	SPOCD1	SPOC domain containing 1	1.001	4.525
+ILMN_1785345	GPR84	G protein-coupled receptor 84	2.03	6.372
+ILMN_1785732	TNFAIP6	TNF alpha induced protein 6	1.628	9.099
+ILMN_1787186	NOV	nephroblastoma overexpressed	-1.471	5.134
+ILMN_1788002	MAPK14	mitogen-activated protein kinase 14	1.281	5.37
+ILMN_1788531	SIT1	signaling threshold regulating transmembrane adaptor 1	-1.024	3.951
+ILMN_1788886	TOX	thymocyte selection associated high mobility group box	-1.434	5.879
+ILMN_1789086			1.085	5.367
+ILMN_1791006	AHI1	Abelson helper integration site 1	-1.165	4.433
+ILMN_1791329	FCRL2	Fc receptor like 2	-1.619	7.859
+ILMN_1791759	CXCL10	C-X-C motif chemokine ligand 10	1.091	4.706
+ILMN_1792455	TMEM158	transmembrane protein 158 (gene/pseudogene)	1.238	8.078
+ILMN_1794863	CAMK2N1	calcium/calmodulin dependent protein kinase II inhibitor 1	-1.095	4.772
+ILMN_1795336	PTER	phosphotriesterase related	-1.1	3.184
+ILMN_1796316	MMP9	matrix metallopeptidase 9	1.015	2.261
+ILMN_1796755	ITGB5	integrin subunit beta 5	1.078	5.976
+ILMN_1796976	NLRC4	NLR family CARD domain containing 4	1.023	7.068
+ILMN_1797428	FCRL3	Fc receptor like 3	-1.425	7.932
+ILMN_1797522	DUSP3	dual specificity phosphatase 3	1.076	11.52
+ILMN_1797776	PRSS23	protease, serine 23	-1.179	4.512
+ILMN_1797975	CXCR3	C-X-C motif chemokine receptor 3	-1.246	7.102
+ILMN_1798270	SMCO4	single-pass membrane protein with coiled-coil domains 4	1.07	12.875
+ILMN_1798612	SNX20	sorting nexin 20	1.176	6.567
+ILMN_1798706	GPR183	G protein-coupled receptor 183	-1.206	10.411
+ILMN_1799467	SAMD9L	sterile alpha motif domain containing 9 like	1.03	7.981
+ILMN_1799848	ANKRD22	ankyrin repeat domain 22	3.591	12.77
+ILMN_1800530	AGAP1	ArfGAP with GTPase domain, ankyrin repeat and PH domain 1	-1.025	3.26
+ILMN_1800958	TMEM237	transmembrane protein 237	-1.496	3.932
+ILMN_1801254			1.431	7.989
+ILMN_1801313	SIAH2	siah E3 ubiquitin protein ligase 2	1.106	7.917
+ILMN_1801762	PFDN4	prefoldin subunit 4	-1.111	3.558
+ILMN_1801776	PSG9	pregnancy specific beta-1-glycoprotein 9	1.273	4.522
+ILMN_1805750	IFITM3	interferon induced transmembrane protein 3	1.906	9.374
+ILMN_1806056	CEACAM8	carcinoembryonic antigen related cell adhesion molecule 8	1.197	3.199
+ILMN_1806907	PAWR	pro-apoptotic WT1 regulator	-1.048	3.956
+ILMN_1807423	IGF2BP3	insulin like growth factor 2 mRNA binding protein 3	1.154	9.716
+ILMN_1808132	FAS	Fas cell surface death receptor	1.05	4.325
+ILMN_1808238	RBPMS2	RNA binding protein with multiple splicing 2	1.018	1.944
+ILMN_1808783	STRBP	spermatid perinuclear RNA binding protein	-1.104	7.616
+ILMN_1808979	CLEC4D	C-type lectin domain family 4 member D	1.451	6.906
+ILMN_1809467	VAMP5	vesicle associated membrane protein 5	1.395	14.13
+ILMN_1810289	MYOF	myoferlin	1.126	9.081
+ILMN_1810374	TMEM156	transmembrane protein 156	-1.034	5.707
+ILMN_1811110	TDRD9	tudor domain containing 9	1.098	5.361
+ILMN_1813544	OXCT1	3-oxoacid CoA-transferase 1	-1.041	5.978
+ILMN_1814917	TLE2	transducin like enhancer of split 2	-1.127	3.029
+ILMN_1815054	ADGRG3	adhesion G protein-coupled receptor G3	1.079	5.549
+ILMN_1821975			-1.099	6.528
+ILMN_1822307			-1.054	3.262
+ILMN_1822671			-1.722	6.04
+ILMN_1823172			-1.108	3.64
+ILMN_1829737			1.31	5.801
+ILMN_1836776	MPRIP	myosin phosphatase Rho interacting protein	-1.076	5.296
+ILMN_1843403			-1.05	7.175
+ILMN_1851599			2.87	13.247
+ILMN_1853116			-1.109	6.028
+ILMN_1859584	LOC101930164	uncharacterized LOC101930164	1.768	8.103
+ILMN_1860051			2.4	11.872
+ILMN_1862909	RORA	RAR related orphan receptor A	-1.005	8.488
+ILMN_1871233			-1.033	8.261
+ILMN_1880611			1.327	4.99
+ILMN_1887011			-1.73	6.423
+ILMN_1896455			1.065	6.268
+ILMN_1903064			1.358	6.599
+ILMN_1904578	TENM1	teneurin transmembrane protein 1	-1.273	6.088
+ILMN_1910120	RRN3P1	RRN3 homolog, RNA polymerase I transcription factor pseudogene 1	-1.137	4.699
+ILMN_1911677			-1.023	6.211
+ILMN_1912287	SUCNR1	succinate receptor 1	1.11	3.454
+ILMN_2047676	OSGEPL1	O-sialoglycoprotein endopeptidase-like 1	-1.206	7.436
+ILMN_2048591	LRRN3	leucine rich repeat neuronal 3	-1.387	4.135
+ILMN_2048607	ANKRD9	ankyrin repeat domain 9	1.048	6.376
+ILMN_2053527	PARP9	poly(ADP-ribose) polymerase family member 9	1.203	7.803
+ILMN_2054019	ISG15	ISG15 ubiquitin-like modifier	1.321	3.506
+ILMN_2055781	KLRF1	killer cell lectin like receptor F1	-1.007	5.412
+ILMN_2058468	BACH2	BTB domain and CNC homolog 2	-1.114	6.143
+ILMN_2062714	PTGDR	prostaglandin D2 receptor	-1.099	7.673
+ILMN_2066849	FAM26F	family with sequence similarity 26 member F	1.036	7.072
+ILMN_2067682			-1.049	4.415
+ILMN_2076602	ITM2A	integral membrane protein 2A	-1.057	2.999
+ILMN_2079655	KLRB1	killer cell lectin like receptor B1	-1.163	9.697
+ILMN_2090004	AQP10	aquaporin 10	1.537	6.763
+ILMN_2092333	GPR141	G protein-coupled receptor 141	1.24	4.709
+ILMN_2092850	HPSE	heparanase	1.294	9.061
+ILMN_2093864	ZNF571	zinc finger protein 571	-1.272	3.913
+ILMN_2094875	ABCB1	ATP binding cassette subfamily B member 1	-1.003	6.036
+ILMN_2098013	CETP	cholesteryl ester transfer protein	1.108	5.929
+ILMN_2102721	DEFA1B	defensin alpha 1B	1.276	3.144
+ILMN_2114568	GBP5	guanylate binding protein 5	2.173	16.326
+ILMN_2126706	LMNB1	lamin B1	1.271	8.021
+ILMN_2128770	CDR2L	cerebellar degeneration related protein 2 like	1.049	5.037
+ILMN_2143314	SPIB	Spi-B transcription factor	-1.458	6.281
+ILMN_2144426	HIST2H2AA3	histone cluster 2, H2aa3	1.154	9.125
+ILMN_2148785	GBP1	guanylate binding protein 1	1.934	13.21
+ILMN_2165289	DEFA3	defensin alpha 3	1.185	2.922
+ILMN_2167426	ASPHD2	aspartate beta-hydroxylase domain containing 2	1.157	13.094
+ILMN_2168217	GPR183	G protein-coupled receptor 183	-1.144	9.951
+ILMN_2169261	TNNI2	troponin I2, fast skeletal type	1.456	4.787
+ILMN_2169490	TDRD9	tudor domain containing 9	1.001	5.102
+ILMN_2170814	LAMP3	lysosomal associated membrane protein 3	1.668	4.536
+ILMN_2173975	RTP4	receptor transporter protein 4	1.385	9.194
+ILMN_2176063	FCGR1A	Fc fragment of IgG receptor Ia	2.913	15.671
+ILMN_2193213	DEFA1	defensin alpha 1	1.139	2.809
+ILMN_2193752	MBLAC2	metallo-beta-lactamase domain containing 2	-1.205	5.103
+ILMN_2204545	ST3GAL4	ST3 beta-galactoside alpha-2,3-sialyltransferase 4	1.039	6.862
+ILMN_2204876	FLVCR2	feline leukemia virus subgroup C cellular receptor family member 2	1.234	10.538
+ILMN_2212999	KIF5C	kinesin family member 5C	-1.139	3.705
+ILMN_2216815	MAP7	microtubule associated protein 7	-1.397	5.414
+ILMN_2221046	GM2A	GM2 ganglioside activator	1.024	4.614
+ILMN_2223772	GP6	glycoprotein VI platelet	1.461	8.785
+ILMN_2224444			-1.078	7.129
+ILMN_2226271	INSL3	insulin like 3	1.023	3.011
+ILMN_2227195	CCDC65	coiled-coil domain containing 65	-1.407	7.232
+ILMN_2239754	IFIT3	interferon induced protein with tetratricopeptide repeats 3	1.234	4.549
+ILMN_2249018	LRRC26	leucine rich repeat containing 26	-1.423	6.331
+ILMN_2260082	NAIP	NLR family apoptosis inhibitory protein	1.684	5.248
+ILMN_2261600	FCGR1B	Fc fragment of IgG receptor Ib	2.684	16.222
+ILMN_2270443	LIMK2	LIM domain kinase 2	1.352	6.733
+ILMN_2279844	LCK	LCK proto-oncogene, Src family tyrosine kinase	-1.29	4.911
+ILMN_2280548	FYB	FYN binding protein	1.064	6.258
+ILMN_2302757	FCGBP	Fc fragment of IgG binding protein	-1.74	9.697
+ILMN_2309180	SMARCD3	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily d, member 3	1.4	10.466
+ILMN_2316236	HOPX	HOP homeobox	-1.074	7.404
+ILMN_2321578	P2RY10	purinergic receptor P2Y10	-1.125	8.109
+ILMN_2321634	RAD17	RAD17 checkpoint clamp loader component	-1.218	6.644
+ILMN_2325337	APOL2	apolipoprotein L2	1.207	9.853
+ILMN_2325338	APOL2	apolipoprotein L2	1.023	9.343
+ILMN_2337655	WARS	tryptophanyl-tRNA synthetase	1.429	16.37
+ILMN_2337928	CXCR5	C-X-C motif chemokine receptor 5	-1.397	6.991
+ILMN_2342638	ASGR2	asialoglycoprotein receptor 2	1.392	8.163
+ILMN_2342695	PDGFA	platelet derived growth factor subunit A	1.324	7.717
+ILMN_2347798	IFI6	interferon alpha inducible protein 6	1.433	6.109
+ILMN_2357419	LILRA5	leukocyte immunoglobulin like receptor A5	1.24	7.802
+ILMN_2366212	CD79B	CD79b molecule	-1.037	8.013
+ILMN_2367671	LIMK2	LIM domain kinase 2	1.382	9.731
+ILMN_2368773	FAM3C	family with sequence similarity 3 member C	-1.088	8.966
+ILMN_2369221			1.321	4.364
+ILMN_2370573	XAF1	XIAP associated factor 1	1.026	4.974
+ILMN_2371055	EFNA1	ephrin A1	-1.096	5.116
+ILMN_2371724	CEACAM1	carcinoembryonic antigen related cell adhesion molecule 1	1.304	8.445
+ILMN_2382906	PLCG1	phospholipase C gamma 1	-1.231	8.819
+ILMN_2383058	SIRPG	signal regulatory protein gamma	-1.015	4.813
+ILMN_2383306	GPATCH4	G-patch domain containing 4	-1.212	3.965
+ILMN_2384181			1.287	7.252
+ILMN_2385278	DCAF4	DDB1 and CUL4 associated factor 4	-1.24	8.79
+ILMN_2386790	KLRC3	killer cell lectin like receptor C3	-1.034	4.747
+ILMN_2388090	MAPK14	mitogen-activated protein kinase 14	1.15	6.768
+ILMN_2388547	EPSTI1	epithelial stromal interaction 1 (breast)	1.598	9.246
+ILMN_2389590	PRKAR1A	protein kinase cAMP-dependent type I regulatory subunit alpha	-1.216	2.212
+ILMN_2389876	TGFB1I1	transforming growth factor beta 1 induced transcript 1	1.018	5.437
+ILMN_2391051	FCGR1B	Fc fragment of IgG receptor Ib	2.797	15.363
+ILMN_2393296	GK	glycerol kinase	1.371	9.707
+ILMN_2405324	IFNLR1	interferon lambda receptor 1	-1.216	6.717
+ILMN_2410826	OAS1	2'-5'-oligoadenylate synthetase 1	1.011	4.077
+ILMN_2411559	PUS1	pseudouridylate synthase 1	-1.049	4.781
+ILMN_2415529	CDK5RAP2	CDK5 regulatory subunit associated protein 2	1.437	8.085
