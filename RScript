@@ -1,0 +1,449 @@
+#Modul: Analisis Ekspresi Gen CRC
+#Dataset: GSE19442 (PTB vs LATENT.TB)
+#Platform: Microarray (IlluminaHuman v3)
+#Tujuan: Mengidentifikasi Differentially Expressed Genes (DEG) 
+
+#PART A. PENGANTAR KONSEP 
+
+#Analisis ekspresi gen bertujuan untuk membandingkan tingkat ekspresi gen 
+#antara dua kondisi biologis (misalnya kanker vs normal) 
+#Pada modul ini kita menggunakan pendekatan statistik limma (Linear Models
+#for Microarray Data), yang merupakan standar emas untuk data microarray. 
+
+#PART B. PERSIAPAN LINGKUNGAN KERJA (INSTALL & LOAD PACKAGE) 
+
+#Apa itu package? 
+#Package adalah kumpulan fungsi siap pakai di R
+#Bioinformatika di R sangat bergantung pada package dari CRAN dan Bioconductor 
+
+#1. Install BiocManager (manajer paket Bioconductor) 
+#IF adalah struktur logika : “jika kondisi terpenuhi, lakukan aksi”
+if (!require("BiocManager", quietly = TRUE))  {
+  install.packages("BiocManager") 
+}
+
+# 2. Install paket Bioconductor (GEOquery & limma) 
+#GEOquery: mengambil data dari database GEO 
+#limma: analisis statistik ekspresi gen 
+BiocManager::install(c("GEOquery", "limma"), ask = FALSE, update = FALSE) 
+
+#Install annotation package sesuai platform
+#Untuk platform Illumina ini, paket anotasi yang tepat adalah illuminaHumanv3.db
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+if (!requireNamespace("illuminaHumanv3.db", quietly = TRUE)) {
+  BiocManager::install("illuminaHumanv3.db", ask = FALSE)
+}
+
+# Install paket anotasi
+BiocManager::install(c("illuminaHumanv3.db", "org.Hs.eg.db"))
+
+#3. Install paket CRAN untuk visualisasi dan manipulasi data 
+#phetmap: heatmap ekspresi gen 
+#ggplot2: grafik (volcano plot)
+#dplyr: manipulasi tabel data 
+
+install.packages(c("pheatmap", "ggplot2", "dplyr"))
+
+#umap: grafik (plot UMAP) 
+if (!requireNamespace("umap", quietly = TRUE)) {
+  install.packages("umap")
+}
+
+#4. Memanggil library 
+#library() digunakan agar fungsi di dalam package bisa digunakan 
+suppressPackageStartupMessages({
+  library(GEOquery)
+  library(limma)
+  library(Biobase)
+  library(pheatmap)
+  library(ggplot2)
+  library(gplots)
+  library(dplyr)
+  library(umap)
+  library(RColorBrewer)
+  library(AnnotationDbi)
+  library(illuminaHumanv3.db)
+  library(org.Hs.eg.db)
+})
+
+#PART C. PENGAMBILAN DATA DARI GEO
+#GEO (Gene Expression Omnibus) adalah database publik milik NCBI
+#getGEO(): fungsi untuk mengunduh dataset berdasarkan ID GEO 
+#Opsi A: dari internet (disarankan untuk konsistensi)
+gset_list <- getGEO("GSE19442", GSEMatrix = TRUE, AnnotGPL = FALSE)
+if (length(gset_list) > 1) {
+  idx <- grep("GPL6947", names(gset_list))
+  stopifnot(length(idx) == 1)
+  gset <- gset_list[[idx]]
+} else {
+  gset <- gset_list[[1]]
+}
+
+# Opsi B: dari local file (jika mau pakai file lokal)
+local_file <- "C:/Users/LENOVO/Dropbox/PC/Documents/BIOINFORMATICS_COURSE/Capstone_Project/GSE19442_series_matrix.txt.gz"
+gset <- getGEO(filename = local_file)  # otomatis mengenali ExpressionSet
+
+#PART D. PRE-PROCESSING DATA EKSPRESI 
+
+# exprs(): mengambil matriks ekspresi gen
+# Baris  = probe/gen
+# Kolom  = sampel
+ex    <- exprs(gset)
+pdata <- pData(gset)
+stopifnot(all(colnames(ex) == rownames(pdata)))  # pastikan urutan sinkron
+
+#PART E. DEFINISI KELOMPOK SAMPEL
+#Parser grup yang robust (pemetaan ke “LATENT.TB” vs “PTB” + urutan level tetap)
+#Ganti blok group_info/make.names/factor dengan berikut:
+# Cari kolom fenotipe yang relevan (agar tahan variasi penamaan)
+cand_cols <- grep("(illness|disease|status|group|condition).*(:ch1)?$",
+                  names(pdata), ignore.case = TRUE, value = TRUE)
+# Pilih salah satu yang paling informatif (cek di RStudio jika perlu)
+print(cand_cols); head(pdata[cand_cols])
+
+# Misal kolom yang valid adalah "illness:ch1"
+src <- tolower(trimws(as.character(pdata[["illness:ch1"]])))
+
+# Map teks ke dua kelas final: PTB vs LATENT.TB
+group <- ifelse(grepl("\\bptb\\b|active|pulmonary", src), "PTB",
+                ifelse(grepl("latent|ltbi", src), "LATENT.TB", NA))
+group <- factor(group, levels = c("LATENT.TB", "PTB"))
+stopifnot(!any(is.na(group)))
+
+# Simpan ke gset agar konsisten di seluruh script
+gset$group <- group
+
+# Cek cepat
+print(table(gset$group))
+
+#PART F. DESIGN MATRIX (KERANGKA STATISTIK) 
+
+#model.matrix():
+#Membuat matriks desain untuk model linear
+#~0 berarti TANPA intercept (best practice limma)
+#3) Design & kontrast yang eksplisit arahnya
+design <- model.matrix(~0 + gset$group)
+
+#colnames(): memberi nama kolom agar mudah dibaca
+colnames(design) <- levels(gset$group)
+
+# Tentukan arah kontras secara eksplisit
+# PILIH salah satu sesuai tujuan:
+#   a) PTB vs LATENT.TB → logFC > 0 artinya lebih tinggi di PTB
+#   b) LATENT.TB vs PTB → logFC > 0 artinya lebih tinggi di LATENT.TB
+contrast_formula <- "PTB - LATENT.TB"   # ← biasanya ini yang diinginkan
+#makeContrasts(): mendefinisikan perbandingan antar grup
+contrast_matrix <- makeContrasts(contrasts = contrast_formula, levels = design)
+
+#PART G. ANALISIS DIFFERENTIAL EXPRESSION (LIMMA)
+
+#lmFit():
+#Membangun model linear untuk setiap gen
+fit  <- lmFit(ex, design)
+
+#contrasts.fit(): menerapkan kontras ke model
+fit2 <- contrasts.fit(fit, contrast_matrix)
+
+#eBayes():
+#Empirical Bayes untuk menstabilkan estimasi varians
+fit2 <- eBayes(fit2)
+
+#tt=topTable():
+#Mengambil hasil akhir DEG
+#adjust = "fdr" -> koreksi multiple testing
+#p.value = 0.05  -> gen sangat signifikan
+tt <- topTable(fit2, adjust = "fdr", sort.by = "P", number = Inf, p.value = 0.05)
+cat("Jumlah DEG (FDR<=0.05):", nrow(tt), "\n")
+
+##PART H. ANOTASI NAMA GEN 
+#Illumina HumanRef-illuminaHumanv3.db (kadang butuh cross-check)
+#Anotasi Illumina v3 (hindari duplikasi)
+#Karena kita pakai AnnotGPL=FALSE, lakukan anotasi manual berikut:
+probe_ids <- rownames(tt)
+
+gene_annotation <- AnnotationDbi::select(
+  illuminaHumanv3.db,
+  keys = probe_ids,
+  columns = c("SYMBOL", "GENENAME"),
+  keytype = "PROBEID"
+)
+
+#Gabungkan dengan hasil limma
+tt$PROBEID <- rownames(tt)
+tt_annot   <- merge(tt, gene_annotation, by = "PROBEID", all.x = TRUE)
+
+head(tt_annot[, c("PROBEID", "SYMBOL", "GENENAME", "logFC", "adj.P.Val")])
+
+#PART I.1 BOXPLOT DISTRIBUSI NILAI EKSPRESI 
+#Boxplot dengan pemetaan warna yang aman (legend pasti cocok)
+#Ganti blok boxplot menjadi:
+palette <- c("LATENT.TB"="steelblue", "PTB"="tomato")
+cols    <- unname(palette[as.character(gset$group)])
+
+boxplot(
+  ex,
+  col = cols,
+  las = 2,
+  outline = FALSE,
+  main = "Boxplot Distribusi Nilai Ekspresi per Sampel (GSE19442)",
+  ylab = "Nilai ekspresi (log2)"
+)
+
+legend(
+  "topright",
+  legend = names(palette),
+  fill   = palette,
+  cex    = 0.6,
+  bty    = "n"
+)
+
+
+#PART I.2 DISTRIBUSI NILAI EKSPRESI (DENSITY PLOT) 
+
+#Density plot menunjukkan sebaran global nilai ekspresi gen
+#Digunakan untuk:
+#- Mengecek efek log-transform
+#- Membandingkan distribusi antar grup
+suppressPackageStartupMessages({
+  library(GEOquery)
+  library(Biobase)
+  library(ggplot2)
+})
+
+#Ambil GSE & pastikan platform GPL6947
+gset_list <- getGEO("GSE19442", GSEMatrix = TRUE, AnnotGPL = FALSE)
+if (length(gset_list) > 1) {
+  idx <- grep("GPL6947", names(gset_list))
+  stopifnot(length(idx) == 1)
+  gset <- gset_list[[idx]]
+} else {
+  gset <- gset_list[[1]]
+}
+
+ex    <- exprs(gset)
+pdata <- pData(gset)
+stopifnot(all(colnames(ex) == rownames(pdata)))
+
+#Log2 otomatis + bersihkan NA/Inf
+qx <- as.numeric(quantile(ex, c(0, .25, .5, .75, .99, 1), na.rm = TRUE))
+LogC <- (qx[5] > 100) || (qx[6] - qx[1] > 50 && qx[2] > 0)
+if (LogC) {
+  ex[ex <= 0] <- NA
+  ex <- log2(ex)
+}
+keep <- apply(ex, 1, function(x) all(is.finite(x)))
+if (sum(!keep) > 0) ex <- ex[keep, , drop = FALSE]
+
+#Parser group yang robust (PTB vs LATENT.TB)
+cand_cols <- grep("(illness|disease|status|group|condition).*(:ch1)?$",
+                  names(pdata), ignore.case = TRUE, value = TRUE)
+# Default: coba pakai kolom 'illness:ch1' jika ada, kalau tidak ambil kandidat pertama
+src_col <- if ("illness:ch1" %in% names(pdata)) "illness:ch1" else cand_cols[1]
+stopifnot(length(src_col) == 1)
+src <- tolower(trimws(as.character(pdata[[src_col]])))
+
+group <- ifelse(grepl("\\bptb\\b|active|pulmonary", src), "PTB",
+                ifelse(grepl("latent|ltbi", src), "LATENT.TB", NA))
+group <- factor(group, levels = c("LATENT.TB","PTB"))
+stopifnot(!any(is.na(group)))
+gset$group <- group
+
+#Density plot (ggplot2) — overlay per sampel, warna per grup
+library(reshape2)  # untuk melt
+df_long <- reshape2::melt(ex, varnames = c("Probe","Sample"), value.name = "Expr")
+df_long$Group <- gset$group[ match(df_long$Sample, rownames(pdata)) ]
+
+# Palet warna konsisten
+pal <- c("LATENT.TB" = "steelblue", "PTB" = "tomato")
+
+#Overlay semua sampel (alpha kecil) — cepat dan informatif
+p1 <- ggplot(df_long, aes(x = Expr, group = Sample, color = Group)) +
+  geom_density(alpha = 0.7, size = 0.4) +
+  scale_color_manual(values = pal) +
+  labs(title = "Density Plot Distribusi Nilai Ekspresi Gen – GSE19442",
+       x = "Expression value (log2)", y = "Density") +
+  theme_minimal(base_size = 11)
+print(p1)
+
+#OPTIONAL_Rata-rata densitas per grup (agregat) — lebih bersih untuk presentasi
+set.seed(1)
+sub_idx <- sample(seq_len(nrow(ex)), min(10000, nrow(ex)))  # pilih 10k probe acak
+df_sub  <- reshape2::melt(ex[sub_idx, , drop = FALSE],
+                          varnames = c("Probe","Sample"), value.name = "Expr")
+df_sub$Group <- gset$group[ match(df_sub$Sample, rownames(pdata)) ]
+
+p2 <- ggplot(df_sub, aes(x = Expr, fill = Group, color = Group)) +
+  geom_density(alpha = 0.25, size = 0.7, adjust = 1) +
+  scale_fill_manual(values = pal) +
+  scale_color_manual(values = pal) +
+  labs(title = "Density Plot Nilai Ekspresi – Rata-rata per Grup",
+       x = "Expression value (log2)", y = "Density") +
+  theme_minimal(base_size = 11)
+print(p2)
+
+#Gabungkan ekspresi & grup ke data frame
+library(ggplot2)
+library(reshape2)
+
+# Pastikan group sudah ada & urutan cocok
+stopifnot(all(colnames(ex) == rownames(pData(gset))))
+group <- gset$group
+stopifnot(!any(is.na(group)))
+
+#Pastikan skala log2 & tanpa NA/Inf
+qx <- as.numeric(quantile(ex, c(0, .25, .5, .75, .99, 1), na.rm = TRUE))
+LogC <- (qx[5] > 100) || (qx[6] - qx[1] > 50 && qx[2] > 0)
+if (LogC) {
+  ex[ex <= 0] <- NA
+  ex <- log2(ex)
+}
+keep <- apply(ex, 1, function(x) all(is.finite(x)))
+if (sum(!keep) > 0) ex <- ex[keep, , drop = FALSE]
+
+#Long format
+ggplot(df_sub, aes(x = Expr, fill = Group, color = Group)) +
+  geom_density(alpha = 0.25, linewidth = 0.7, adjust = 1) +
+  scale_fill_manual(values = pal) +
+  scale_color_manual(values = pal) +
+  labs(title = "Density Plot Nilai Ekspresi – Rata-rata per Grup",
+       x = "Nilai ekspresi (log2)", y = "Kerapatan") +
+  theme_minimal(base_size = 11)
+
+#PART I.3 UMAP (VISUALISASI DIMENSI RENDAH)
+
+#UMAP digunakan untuk:
+#- Mereduksi ribuan gen menjadi 2 dimensi
+#- Melihat pemisahan sampel secara global
+
+#Transpose matriks ekspresi:
+#UMAP bekerja pada OBSERVATION = sampel
+library(umap)
+library(ggplot2)
+
+# 1) Validasi objek yang ada
+stopifnot(exists("gset"), exists("ex"))
+stopifnot(all(colnames(ex) == rownames(pData(gset))))
+stopifnot(!any(is.na(gset$group)))
+
+# 2) Pastikan data log2 dan finite
+qx <- as.numeric(quantile(ex, c(0,.25,.5,.75,.99,1), na.rm = TRUE))
+LogC <- (qx[5] > 100) || (qx[6] - qx[1] > 50 && qx[2] > 0)
+if (LogC) {
+  ex[ex <= 0] <- NA
+  ex <- log2(ex)
+}
+keep <- apply(ex, 1, function(x) all(is.finite(x)))
+if (sum(!keep) > 0) ex <- ex[keep, , drop = FALSE]
+
+# 3) Siapkan input UMAP: baris = sampel; standarisasi fitur
+X <- t(ex)
+X_scaled <- scale(X, center = TRUE, scale = TRUE)
+X_scaled[!is.finite(X_scaled)] <- 0
+
+#UMAP
+set.seed(123)
+cfg <- umap.defaults
+cfg$n_neighbors <- 15
+cfg$min_dist    <- 0.1
+um <- umap(X_scaled, config = cfg)
+emb <- um$layout
+colnames(emb) <- c("UMAP1","UMAP2")
+
+#Plot
+palette <- c("LATENT.TB"="steelblue","PTB"="tomato")
+df_umap <- data.frame(UMAP1 = emb[,1], UMAP2 = emb[,2],
+                      Group = factor(gset$group, levels = c("LATENT.TB","PTB")))
+
+ggplot(df_umap, aes(UMAP1, UMAP2, color = Group)) +
+  geom_point(size = 2, alpha = 0.85) +
+  scale_color_manual(values = palette, drop = FALSE) +
+  labs(title = "UMAP – GSE19442 (PTB vs LATENT.TB)",
+       x = "UMAP1", y = "UMAP2") +
+  theme_minimal(base_size = 12)
+
+
+#PART J.1 VISUALISASI VOLCANO PLOT 
+
+#Volcano plot menggabungkan:
+#- Log fold change (efek biologis)
+#- Signifikansi statistik
+library(ggplot2)
+
+alpha <- 0.05
+lfc   <- 1     # |log2FC| >= 1 (≈ 2-fold)
+
+tt <- topTable(fit2, adjust="fdr", sort.by="P", number=Inf)
+tt$negLogFDR <- -log10(tt$adj.P.Val)
+tt$Signif <- with(tt,
+  ifelse(adj.P.Val <= alpha & logFC >=  lfc, "Up in PTB",
+  ifelse(adj.P.Val <= alpha & logFC <= -lfc, "Down in PTB", "NS"))
+)
+
+#Hitung ringkas
+table(tt$Signif)
+summary(tt$logFC)
+
+#Volcano terfokus (xlim ~ biologis)
+library(ggplot2)
+pal <- c("Down in PTB"="steelblue", "NS"="grey70", "Up in PTB"="tomato")
+
+ggplot(tt, aes(x=logFC, y=negLogFDR, color=Signif)) +
+  geom_point(alpha=0.8, size=1.1) +
+  scale_color_manual(values=pal) +
+  geom_vline(xintercept=c(-lfc, lfc), linetype="dashed", linewidth=0.5) +
+  geom_hline(yintercept=-log10(alpha), linetype="dashed", linewidth=0.5) +
+  coord_cartesian(xlim=c(-4, 4)) +  # fokus rentang wajar log2FC
+  labs(title="Volcano Plot – GSE19442 (PTB vs LATENT.TB)",
+       x="log2 Fold Change (PTB - LATENT.TB)", y="-log10(FDR)") +
+  theme_minimal(base_size=12)
+
+#PART J.2 VISUALISASI HEATMAP 
+
+#Heatmap digunakan untuk melihat pola ekspresi gen
+#antar sampel berdasarkan gen-gen paling signifikan
+# Pastikan paket RColorBrewer tersedia
+if (!requireNamespace("RColorBrewer", quietly = TRUE)) {
+  install.packages("RColorBrewer")
+}
+library(RColorBrewer)
+
+# Palet warna kontinyu (biru-putih-merah) untuk ekspresi
+col_fun <- colorRampPalette(rev(brewer.pal(11, "RdBu")))
+
+#Pilih top variable genes 
+n_top <- 50
+rv <- matrixStats::rowVars(ex)
+sel <- order(rv, decreasing = TRUE)[seq_len(min(n_top, length(rv)))]
+ex_sel <- ex[sel, , drop = FALSE]
+
+# Annotation
+anno_col <- data.frame(Group = factor(gset$group, levels = c("LATENT.TB","PTB")))
+rownames(anno_col) <- colnames(ex_sel)
+pal_group <- c("LATENT.TB"="steelblue", "PTB"="tomato")
+ann_colors <- list(Group = pal_group)
+
+# Heatmap
+col_fun <- colorRampPalette(rev(brewer.pal(11,"RdBu")))
+pheatmap(
+  ex_sel,
+  scale = "row",
+  color = col_fun(101),
+  clustering_distance_rows = "euclidean",
+  clustering_distance_cols = "euclidean",
+  clustering_method = "complete",
+  annotation_col = anno_col,
+  annotation_colors = ann_colors,
+  show_rownames = FALSE,
+  show_colnames = TRUE,
+  fontsize_row = 6,
+  fontsize_col = 8,
+  angle_col = 90,             
+  main = "Top 50 Differentially Expressed Genes"
+)
+
+#PART K. MENYIMPAN HASIL 
+
+# write.csv(): menyimpan hasil analisis ke file CSV
+write.csv(topTableResults, "Hasil_GSE19442_DEG.csv")
+
+message("Analisis selesai. File hasil telah disimpan.")
