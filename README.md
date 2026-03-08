@@ -1,2 +1,2 @@
 # Bioinformatics_course_final_project_BRSP
-A capstone project that make a report about differentially expressed gene (DEG) in human disease
+A capstone project focused on producing a scientifically rigorous report on differentially expressed genes (DEGs) implicated in human diseases. The project includes acquiring transcriptomic datasets from NCBI GEO, performing quality control and normalization, applying statistical models (such as linear modeling using limma) to identify significantly upregulated and downregulated genes, and conducting downstream functional analyses such as Gene Ontology (GO) and KEGG pathway enrichment to elucidate the biological mechanisms underlying the disease phenotype
